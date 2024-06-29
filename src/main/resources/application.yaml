@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+vk:
+  token: "vk1.a.VLuQxiQ7QTy_1pCAS9Q16JF8jZtNGzc_czSycsLCTRupfLB-QIzys2cws9e2whaMredVUCWlR0n4Fb-ByDrPZnKDGioBfW57-EQBPb979fEAY4Evs7URjjxMbdfIOrqiVbs3xqbyRW4cUTPFoftgKull0HjfsGtkmak5tw1OgAFdHoSMNdUp9EMpfRq5duT3wo4N3_bGXF1FzW1H4r9ZfA"
+  secret: "a8af3a8e"
+  group_id: "226379469"
+  confirmation_response: "a7435070"
