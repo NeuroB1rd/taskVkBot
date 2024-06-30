@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+tuna:
+  port: 8080
+  path: "path/tuna.exe"
+
 vk:
   token: "SECRET_KEY"
   secret: "SECRET"
