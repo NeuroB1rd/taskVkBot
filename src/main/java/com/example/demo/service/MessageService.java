@@ -32,19 +32,15 @@ public class MessageService implements CallbackHandler {
     @Override
     public String handleCallback(VkMessage message) {
         logger.info("Received message: {}", message);
-        if ("message_new".equals(message.getType())) {
-            if (secret.equals(message.getSecret())) {
-                VkMessageDetails messageDetails = message.getObject().getMessage();
-                int userId = messageDetails.getFromId();
-                String text = messageDetails.getText();
-                String responseText = "Вы сказали: " + text;
-                logger.info("Sending message to user {}: {}", userId, responseText);
-                sendMessage(userId, responseText);
-            } else {
-                logger.warn("Invalid secret key");
-            }
+        if (secret.equals(message.getSecret())) {
+            VkMessageDetails messageDetails = message.getObject().getMessage();
+            int userId = messageDetails.getFromId();
+            String text = messageDetails.getText();
+            String responseText = "Вы сказали: " + text;
+            logger.info("Sending message to user {}: {}", userId, responseText);
+            sendMessage(userId, responseText);
         } else {
-            logger.warn("Unsupported message type: {}", message.getType());
+            logger.warn("Invalid secret key");
         }
         return "ok";
     }
