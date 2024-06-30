@@ -1,23 +1,18 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.VkMessage;
 import com.example.demo.service.CallbackHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -34,8 +29,8 @@ public class VkControllerTest {
     @MockBean
     private List<CallbackHandler> callbackHandlers;
 
-    @Value("${vk.secret}")
-    private String secret;
+    @Value("${vk.confirmation_response}")
+    private String confirmationResponse;
     private CallbackHandler confirmationHandler;
     private CallbackHandler messageHandler;
 
@@ -60,7 +55,7 @@ public class VkControllerTest {
                         .contentType("application/json")
                         .content(confirmationJson))
                 .andExpect(status().isOk())
-                .andExpect(content().string("ok"));
+                .andExpect(content().string(confirmationResponse));
     }
 
     @Test

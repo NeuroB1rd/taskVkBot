@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.VkMessage;
 import com.example.demo.service.CallbackHandler;
-import com.example.demo.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class VkController {
                 .findFirst();
 
         if (handler.isPresent()) {
-            handler.get().handleCallback(message);
+            return handler.get().handleCallback(message);
         } else {
             logger.warn("No handler found for message type: " + message.getType());
         }
